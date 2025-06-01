@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اینفوگرافیک: روندهای صنعت و تحقیقات بازار فین‌تک</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #F8FAFC;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .flowchart-arrow {
+            font-size: 2.5rem;
+            color: #0077B6;
+            line-height: 1;
+            align-self: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-black text-[#0077B6] mb-4">تحلیل جامع بازار و روندهای صنعت فین‌تک</h1>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto">گزارشی عمیق بر اساس آخرین داده‌ها و پیش‌بینی‌های کارشناسان برای سال ۲۰۲۵، با تمرکز بر روندهای کلیدی، چشم‌انداز رقابتی و رفتار مصرف‌کنندگان.</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <section class="lg:col-span-4 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-[#0077B6] mb-2">اندازه و رشد بازار جهانی فین‌تک</h2>
+                <p class="text-slate-600 mb-6">بازار فین‌تک با شتابی چشمگیر در حال رشد است و پیش‌بینی می‌شود این روند صعودی با نوآوری‌های مداوم در حوزه پرداخت دیجیتال، هوش مصنوعی و بلاکچین ادامه یابد.</p>
+                <div class="chart-container h-96">
+                    <canvas id="marketSizeChart"></canvas>
+                </div>
+            </section>
+            
+            <section class="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8 flex flex-col">
+                <h2 class="text-2xl font-bold text-[#0077B6] mb-2">تحلیل سهم بازار</h2>
+                <p class="text-slate-600 mb-6">بازیگران اصلی صنعت فین‌تک سهم قابل توجهی از بازار را در اختیار دارند، اما استارتاپ‌های نوآور نیز به سرعت در حال کسب سهم و به چالش کشیدن غول‌های این عرصه هستند.</p>
+                <div class="chart-container flex-grow">
+                    <canvas id="marketShareChart"></canvas>
+                </div>
+            </section>
+
+            <section class="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-[#0077B6] mb-4">چشم‌انداز رقابتی (SWOT)</h2>
+                <p class="text-slate-600 mb-6">تحلیل نقاط قوت، ضعف، فرصت‌ها و تهدیدهای پیش روی صنعت فین‌تک، دیدی استراتژیک برای فعالان این حوزه فراهم می‌کند.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-slate-700">
+                    <div class="bg-[#CAF0F8]/50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg mb-2 text-[#0077B6]">نقاط قوت ✅</h3>
+                        <ul class="list-inside list-disc text-sm space-y-1">
+                            <li>نوآوری سریع و چابکی</li>
+                            <li>کاهش هزینه‌های عملیاتی</li>
+                            <li>بهبود تجربه کاربری</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-100/50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg mb-2 text-red-600">نقاط ضعف ❌</h3>
+                        <ul class="list-inside list-disc text-sm space-y-1">
+                            <li>چالش‌های امنیت سایبری</li>
+                            <li>پیچیدگی‌های قوانین نظارتی</li>
+                            <li>نیاز به جلب اعتماد عمومی</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-100/50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg mb-2 text-green-600">فرصت‌ها 💡</h3>
+                        <ul class="list-inside list-disc text-sm space-y-1">
+                            <li>گسترش بازارهای نوظهور</li>
+                            <li>همکاری با بانک‌های سنتی</li>
+                            <li>توسعه بانکداری باز (Open Banking)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-yellow-100/50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg mb-2 text-yellow-600">تهدیدها ⚠️</h3>
+                        <ul class="list-inside list-disc text-sm space-y-1">
+                            <li>تغییرات سریع قوانین</li>
+                            <li>رقابت شدید با غول‌های فناوری</li>
+                            <li>نوسانات اقتصادی جهانی</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lg:col-span-4 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-[#0077B6] mb-2">نرخ پذیرش فناوری‌های کلیدی</h2>
+                <p class="text-slate-600 mb-6">کیف پول‌های دیجیتال و پرداخت‌های همراه به طور گسترده‌ای پذیرفته شده‌اند، در حالی که هوش مصنوعی و بلاکچین در حال باز کردن مسیرهای جدیدی برای رشد هستند.</p>
+                <div class="chart-container h-96">
+                    <canvas id="techAdoptionChart"></canvas>
+                </div>
+            </section>
+
+            <section class="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-[#0077B6] mb-2">جمعیت‌شناسی مصرف‌کنندگان</h2>
+                <p class="text-slate-600 mb-6">نسل جوان (۱۸ تا ۳۴ سال) پیشگامان اصلی استفاده از خدمات فین‌تک هستند، اما پذیرش در میان سایر گروه‌های سنی نیز در حال افزایش است.</p>
+                <div class="chart-container">
+                    <canvas id="demographicsChart"></canvas>
+                </div>
+            </section>
+
+            <section class="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-[#0077B6] mb-4">جریان ارزش یک سرویس فین‌تک</h2>
+                 <p class="text-slate-600 mb-6">یک فرآیند یکپارچه، از ثبت‌نام کاربر تا پشتیبانی پس از تراکنش، اساس یک سرویس فین‌تک موفق را تشکیل می‌دهد.</p>
+                <div class="flex flex-col md:flex-row items-center justify-around h-full space-y-4 md:space-y-0 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="bg-[#90E0EF] text-slate-800 rounded-full w-24 h-24 flex items-center justify-center font-bold text-sm p-2">ثبت‌نام کاربر</div>
+                    </div>
+                    <div class="flowchart-arrow">›</div>
+                     <div class="flex flex-col items-center">
+                        <div class="bg-[#00B4D8] text-white rounded-full w-24 h-24 flex items-center justify-center font-bold text-sm p-2">پردازش تراکنش</div>
+                    </div>
+                    <div class="flowchart-arrow">›</div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-[#0077B6] text-white rounded-full w-24 h-24 flex items-center justify-center font-bold text-sm p-2">پشتیبانی مشتری</div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-12 text-slate-500 text-sm">
+            <p>این گزارش بر اساس تحلیل داده‌های عمومی و پیش‌بینی‌های صنعتی تهیه شده است. © ۲۰۲۵</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const tooltipConfig = {
+            plugins: {
+                tooltip: {
+                    bodyFont: {
+                        family: 'Vazirmatn',
+                    },
+                    titleFont: {
+                        family: 'Vazirmatn',
+                    },
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    ticks: {
+                        font: { family: 'Vazirmatn' }
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: { family: 'Vazirmatn' }
+                    }
+                }
+            }
+        };
+
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            });
+            lines.push(currentLine.trim());
+            return lines.filter(line => line.length > 0);
+        }
+
+        const marketSizeCtx = document.getElementById('marketSizeChart').getContext('2d');
+        new Chart(marketSizeCtx, {
+            type: 'line',
+            data: {
+                labels: ['۲۰۲۰', '۲۰۲۱', '۲۰۲۲', '۲۰۲۳', '۲۰۲۴', '۲۰۲۵ (پیش‌بینی)'],
+                datasets: [{
+                    label: 'اندازه بازار (میلیارد دلار)',
+                    data: [110, 131, 158, 190, 235, 290],
+                    borderColor: '#0077B6',
+                    backgroundColor: '#90E0EF',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: tooltipConfig
+        });
+
+        const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
+        new Chart(marketShareCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['شرکت آلفا', 'شرکت بتا', 'شرکت گاما', 'سایر رقبا'],
+                datasets: [{
+                    label: 'سهم بازار',
+                    data: [35, 25, 20, 20],
+                    backgroundColor: ['#0077B6', '#00B4D8', '#90E0EF', '#CAF0F8'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4
+                }]
+            },
+            options: { ...tooltipConfig, 
+                plugins: { ...tooltipConfig.plugins, 
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { family: 'Vazirmatn' } }
+                    }
+                }
+            }
+        });
+
+        const techAdoptionCtx = document.getElementById('techAdoptionChart').getContext('2d');
+        new Chart(techAdoptionCtx, {
+            type: 'bar',
+            data: {
+                labels: ['کیف پول دیجیتال و پرداخت همراه', 'هوش مصنوعی در امور مالی', 'فناوری بلاکچین و رمزارز', 'بانکداری باز (Open Banking)'].map(label => wrapLabel(label, 16)),
+                datasets: [{
+                    label: 'نرخ پذیرش در صنعت (%)',
+                    data: [85, 45, 30, 55],
+                    backgroundColor: '#00B4D8',
+                    borderRadius: 8
+                }]
+            },
+            options: tooltipConfig
+        });
+
+        const demographicsCtx = document.getElementById('demographicsChart').getContext('2d');
+        new Chart(demographicsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['۱۸-۲۴ سال', '۲۵-۳۴ سال', '۳۵-۴۴ سال', '۴۵+ سال'],
+                datasets: [{
+                    label: 'درصد کاربران',
+                    data: [42, 35, 15, 8],
+                    backgroundColor: ['#0077B6', '#00B4D8', '#90E0EF', '#CAF0F8'],
+                    borderWidth: 0
+                }]
+            },
+            options: { ...tooltipConfig, indexAxis: 'y' }
+        });
+
+    </script>
+</body>
+</html>
